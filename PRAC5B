@@ -1,0 +1,19 @@
+def LRS(a):
+    n=len(a)
+    c = [[0] * (n + 1) for _ in range(n + 1)]
+
+    for i in range(1,n+1):
+      for j in range(1,n+1):
+       if a[i-1] == a[j-1] and i != j:
+         c[i][j] = 1 + c[i-1][j-1]
+       else:
+        c[i][j] = max(c[i-1][j], c[i][j-1])
+    print(&quot;Input sequence a:&quot;, a)
+    print(&quot;LRS Matrix:&quot;)
+    for row in c:
+        print(row)
+    return c[n][n]
+a =&quot;ABCCKJK&quot;
+
+result=LRS(a)
+print(&quot;\nResult (Length of Longest Repeating Subsequence):&quot;, result)
